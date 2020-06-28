@@ -21,6 +21,7 @@
 		21AFB82724A873CD00D1AF0C /* CityLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21AFB82624A873CD00D1AF0C /* CityLoader.swift */; };
 		21AFB82924A876C500D1AF0C /* CitySearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21AFB82824A876C500D1AF0C /* CitySearch.swift */; };
 		21AFB82B24A8776F00D1AF0C /* CitySearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21AFB82A24A8776F00D1AF0C /* CitySearchTests.swift */; };
+		21AFB82D24A8884400D1AF0C /* CityError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21AFB82C24A8884400D1AF0C /* CityError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		21AFB82624A873CD00D1AF0C /* CityLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityLoader.swift; sourceTree = "<group>"; };
 		21AFB82824A876C500D1AF0C /* CitySearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySearch.swift; sourceTree = "<group>"; };
 		21AFB82A24A8776F00D1AF0C /* CitySearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySearchTests.swift; sourceTree = "<group>"; };
+		21AFB82C24A8884400D1AF0C /* CityError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 		21AFB81924A871A900D1AF0C /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				21AFB82C24A8884400D1AF0C /* CityError.swift */,
 				21AFB82624A873CD00D1AF0C /* CityLoader.swift */,
 				21AFB82824A876C500D1AF0C /* CitySearch.swift */,
 			);
@@ -268,6 +271,7 @@
 				21AFB7F724A8710400D1AF0C /* AppDelegate.swift in Sources */,
 				21AFB82724A873CD00D1AF0C /* CityLoader.swift in Sources */,
 				21AFB7F924A8710400D1AF0C /* SceneDelegate.swift in Sources */,
+				21AFB82D24A8884400D1AF0C /* CityError.swift in Sources */,
 				21AFB81F24A8723100D1AF0C /* LocationViewController.swift in Sources */,
 				21AFB82324A872C400D1AF0C /* Coordinate.swift in Sources */,
 			);
