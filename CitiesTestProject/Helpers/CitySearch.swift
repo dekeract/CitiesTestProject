@@ -9,11 +9,11 @@
 import Foundation
 
 protocol CitySearching {
-    func filter(cities: [City], with searchedText: String)
+    func filter(cities: [City], with searchedText: String) -> [City]
 }
 
 class CitySearch: CitySearching {
-    func filter(cities: [City], with searchedText: String) {
-        
+    func filter(cities: [City], with searchedText: String) -> [City] {
+        return []
     }
 }

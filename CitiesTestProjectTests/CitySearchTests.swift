@@ -7,27 +7,80 @@
 //
 
 import XCTest
+@testable import CitiesTestProject
 
 class CitySearchTests: XCTestCase {
+    
+    var sut: CitySearch!
+    var citiesMock: [City]!
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    override func setUp() {
+        super.setUp()
+        
+        sut = CitySearch()
+        let emptyCoordinate = Coordinate(latitude: 0, longitude: 0)
+        citiesMock = [
+            City(id: 0, name: "Alabama", country: "US", coordinate: emptyCoordinate),
+            City(id: 0, name: "Albuquerque", country: "US", coordinate: emptyCoordinate),
+            City(id: 0, name: "Anaheim", country: "US", coordinate: emptyCoordinate),
+            City(id: 0, name: "Odessa", country: "UA", coordinate: emptyCoordinate),
+            City(id: 0, name: "Odessa", country: "US", coordinate: emptyCoordinate),
+            City(id: 0, name: "Sydney", country: "AU", coordinate: emptyCoordinate)
+        ]
+    }
+    
+    override func tearDown() {
+        sut = nil
+        citiesMock = nil
+        
+        super.tearDown()
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    func testSearchUppercase() {
+        let searchText = "Alabama"
+        
+        let filteredCities = sut.filter(cities: citiesMock, with: searchText)
+        
+        XCTAssertEqual(filteredCities.count, 1, "Found more or less than 1 Alabama city in mocks")
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    func testSearchLowercase() {
+        let searchText = "alabama"
+        
+        let filteredCities = sut.filter(cities: citiesMock, with: searchText)
+        
+        XCTAssertEqual(filteredCities.count, 1, "Found more or less than 1 alabama city in mocks")
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testSearchPartText() {
+        let searchText = "al"
+        
+        let filteredCities = sut.filter(cities: citiesMock, with: searchText)
+        
+        XCTAssertEqual(filteredCities.count, 2, "Found more or less than 2 cities started with al in mocks")
     }
-
+    
+    func testSearchWithCountry() {
+        let searchText = "Odessa, US"
+        
+        let filteredCities = sut.filter(cities: citiesMock, with: searchText)
+        
+        XCTAssertEqual(filteredCities.count, 1, "Found more or less than 1 city Odessa, US")
+    }
+    
+    func testSearchWithCountryFirst() {
+        let searchText = "US, Odessa"
+        
+        let filteredCities = sut.filter(cities: citiesMock, with: searchText)
+        
+        XCTAssertEqual(filteredCities.count, 0, "Found cities when search started with country")
+    }
+    
+    func testSearchWithInvalidText() {
+        let searchText = "alm"
+        
+        let filteredCities = sut.filter(cities: citiesMock, with: searchText)
+        
+        XCTAssertEqual(filteredCities.count, 0, "Found cities with incorrect search text")
+    }
 }

@@ -9,11 +9,11 @@
 import Foundation
 
 protocol CityLoading {
-    func load(_ completion: Result<[City], Error>)
+    func load(_ completion: (Result<[City], Error>) -> Void)
 }
 
 class CityLoader: CityLoading {
-    func load(_ completion: Result<[City], Error>) {
+    func load(_ completion: (Result<[City], Error>) -> Void) {
         
     }
 }
