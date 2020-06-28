@@ -14,6 +14,6 @@ protocol CitySearching {
 
 class CitySearch: CitySearching {
     func filter(cities: [City], with searchedText: String) -> [City] {
-        return []
+        return cities.filter { $0.searchName.lowercased().starts(with: searchedText.lowercased()) }
     }
 }
