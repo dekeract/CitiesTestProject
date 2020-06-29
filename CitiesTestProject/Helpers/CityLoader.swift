@@ -8,17 +8,20 @@
 
 import Foundation
 
+typealias LoadingCompletion = (Result<[City], Error>) -> Void
+
 protocol CityLoading {
-    func load(from fileName: String, completion: @escaping (Result<[City], Error>) -> Void)
+    func load(from fileName: String, completion: @escaping LoadingCompletion)
 }
 
 class CityLoader: CityLoading {
     private let queue = DispatchQueue(label: "personal.CitiesTestProject.CityLoader")
     
     func load(from fileName: String, completion: @escaping (Result<[City], Error>) -> Void) {
+        let wrappedCompletion = wrapMainCompletion(completion)
         queue.async {
             guard let fileURL = Bundle.main.url(forResource: fileName, withExtension: "json") else {
-                completion(.failure(CityError.missingFile))
+                wrappedCompletion(.failure(CityError.missingFile))
                 return
             }
             
@@ -26,10 +29,18 @@ class CityLoader: CityLoading {
                 let data = try Data(contentsOf: fileURL)
                 var cities = try JSONDecoder().decode([City].self, from: data)
                 cities.sort(by: { $0.searchName < $1.searchName })
-                completion(.success(cities))
+                wrappedCompletion(.success(cities))
             } catch {
-                completion(.failure(error))
+                wrappedCompletion(.failure(error))
             }
         }
+    }
+    
+    private func wrapMainCompletion(_ completion: @escaping LoadingCompletion) -> LoadingCompletion {
+      return { result in
+        DispatchQueue.main.async {
+          completion(result)
+        }
+      }
     }
 }

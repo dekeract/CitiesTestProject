@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		212D946224AA278000E99179 /* fakeCities.json in Resources */ = {isa = PBXBuildFile; fileRef = 212D946124AA278000E99179 /* fakeCities.json */; };
+		212D946424AA2C8200E99179 /* City+DisplayCoordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212D946324AA2C8200E99179 /* City+DisplayCoordinate.swift */; };
 		21AFB7F724A8710400D1AF0C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21AFB7F624A8710400D1AF0C /* AppDelegate.swift */; };
 		21AFB7F924A8710400D1AF0C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21AFB7F824A8710400D1AF0C /* SceneDelegate.swift */; };
 		21AFB7FB24A8710400D1AF0C /* CitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21AFB7FA24A8710400D1AF0C /* CitiesViewController.swift */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		212D946124AA278000E99179 /* fakeCities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fakeCities.json; sourceTree = "<group>"; };
+		212D946324AA2C8200E99179 /* City+DisplayCoordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "City+DisplayCoordinate.swift"; sourceTree = "<group>"; };
 		21AFB7F324A8710400D1AF0C /* CitiesTestProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CitiesTestProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21AFB7F624A8710400D1AF0C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21AFB7F824A8710400D1AF0C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				21AFB82E24A889CC00D1AF0C /* City+Search.swift */,
+				212D946324AA2C8200E99179 /* City+DisplayCoordinate.swift */,
 				21AFB82024A872BC00D1AF0C /* City.swift */,
 				21AFB82224A872C400D1AF0C /* Coordinate.swift */,
 			);
@@ -278,6 +281,7 @@
 				21AFB7F724A8710400D1AF0C /* AppDelegate.swift in Sources */,
 				21AFB82724A873CD00D1AF0C /* CityLoader.swift in Sources */,
 				21AFB7F924A8710400D1AF0C /* SceneDelegate.swift in Sources */,
+				212D946424AA2C8200E99179 /* City+DisplayCoordinate.swift in Sources */,
 				21AFB82F24A889CC00D1AF0C /* City+Search.swift in Sources */,
 				21AFB82D24A8884400D1AF0C /* CityError.swift in Sources */,
 				21AFB81F24A8723100D1AF0C /* LocationViewController.swift in Sources */,
