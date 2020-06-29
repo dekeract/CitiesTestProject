@@ -24,7 +24,8 @@ class CityLoader: CityLoading {
             
             do {
                 let data = try Data(contentsOf: fileURL)
-                let cities = try JSONDecoder().decode([City].self, from: data)
+                var cities = try JSONDecoder().decode([City].self, from: data)
+                cities.sort(by: { $0.searchName < $1.searchName })
                 completion(.success(cities))
             } catch {
                 completion(.failure(error))
