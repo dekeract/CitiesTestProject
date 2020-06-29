@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Cities View Controller-->
+        <scene sceneID="8FB-Rg-Zjt">
+            <objects>
+                <viewController storyboardIdentifier="CitiesViewController" id="aiP-uz-ap3" customClass="CitiesViewController" customModule="CitiesTestProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YVl-VJ-R4P">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KcK-6X-QlB">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="A6g-fw-SFd">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="A6g-fw-SFd" id="Ocg-eA-bD2">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="V45-Sd-VVH" kind="show" identifier="LocationSegue" id="ixd-a8-vFp"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="aiP-uz-ap3" id="ixm-PE-8sg"/>
+                                    <outlet property="delegate" destination="aiP-uz-ap3" id="uqG-hN-iAw"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="NWG-Yn-WsB" firstAttribute="trailing" secondItem="KcK-6X-QlB" secondAttribute="trailing" id="HEw-TN-bGp"/>
+                            <constraint firstItem="KcK-6X-QlB" firstAttribute="top" secondItem="NWG-Yn-WsB" secondAttribute="top" id="juf-1w-zCn"/>
+                            <constraint firstItem="NWG-Yn-WsB" firstAttribute="bottom" secondItem="KcK-6X-QlB" secondAttribute="bottom" id="mQG-Oc-20A"/>
+                            <constraint firstItem="KcK-6X-QlB" firstAttribute="leading" secondItem="NWG-Yn-WsB" secondAttribute="leading" id="sJv-wE-WUb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="NWG-Yn-WsB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="5mU-y7-y6N"/>
+                    <connections>
+                        <outlet property="citiesTableView" destination="KcK-6X-QlB" id="lF7-7g-i0n"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3kG-Dq-6UV" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="244.92753623188409" y="87.723214285714278"/>
+        </scene>
+        <!--Location View Controller-->
+        <scene sceneID="iVu-Qq-1mu">
+            <objects>
+                <viewController storyboardIdentifier="LocationViewController" id="V45-Sd-VVH" customClass="LocationViewController" customModule="CitiesTestProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TKD-8w-F8K">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="yuh-5j-63K">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="aF6-Rn-gAa" firstAttribute="bottom" secondItem="yuh-5j-63K" secondAttribute="bottom" id="iYH-Fv-zeK"/>
+                            <constraint firstItem="yuh-5j-63K" firstAttribute="leading" secondItem="aF6-Rn-gAa" secondAttribute="leading" id="oEn-PY-V8m"/>
+                            <constraint firstItem="yuh-5j-63K" firstAttribute="top" secondItem="aF6-Rn-gAa" secondAttribute="top" id="opw-ao-LHA"/>
+                            <constraint firstItem="aF6-Rn-gAa" firstAttribute="trailing" secondItem="yuh-5j-63K" secondAttribute="trailing" id="ylT-Hz-Jh4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="aF6-Rn-gAa"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="9UH-qH-kbs"/>
+                    <connections>
+                        <outlet property="mapKitView" destination="yuh-5j-63K" id="PmJ-YL-Hw7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ojG-QX-DER" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1007" y="88"/>
+        </scene>
+    </scenes>
+</document>

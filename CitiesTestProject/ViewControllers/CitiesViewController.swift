@@ -10,19 +10,16 @@ import UIKit
 
 class CitiesViewController: UIViewController {
     @IBOutlet weak var citiesTableView: UITableView!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
-    private let loader: CityLoader = CityLoader()
     private let search: CitySearch = CitySearch()
     
-    private var cities: [City] = []
+    var cities: [City] = []
     private var filteredCities: [City] = []
     
     private var items: [City] {
         return self.isFiltering ? self.filteredCities : self.cities
     }
     
-    private let citiesFilename = "cities"
     private let cellIdentifier = "Cell"
     private let segueIdentifier = "LocationSegue"
     
@@ -40,28 +37,6 @@ class CitiesViewController: UIViewController {
         self.searchController.searchBar.placeholder = NSLocalizedString("city_search_bar_placeholder", comment: "")
         self.navigationItem.searchController = self.searchController
         self.definesPresentationContext = true
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        self.activityIndicator.startAnimating()
-        self.loader.load(from: self.citiesFilename) { [weak self] (result) in
-            guard let strongSelf = self else {
-                self?.activityIndicator.stopAnimating()
-                return
-            }
-            
-            switch result {
-            case .success(let items):
-                strongSelf.cities = items
-                strongSelf.citiesTableView.reloadData()
-            case .failure(let error):
-                // TODO: Display error
-                break
-            }
-            strongSelf.activityIndicator.stopAnimating()
-        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
