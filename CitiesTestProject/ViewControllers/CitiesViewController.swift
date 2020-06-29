@@ -16,9 +16,26 @@ class CitiesViewController: UIViewController {
     private let search: CitySearch = CitySearch()
     
     private var cities: [City] = []
+    private var filteredCities: [City] = []
     
     private let citiesFilename = "cities"
     private let cellIdentifier = "Cell"
+    
+    private let searchController = UISearchController(searchResultsController: nil)
+    
+    private var isFiltering: Bool {
+        return self.searchController.isActive && !self.searchController.searchBar.isEmpty
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.searchController.searchResultsUpdater = self
+        self.searchController.obscuresBackgroundDuringPresentation = false
+        self.searchController.searchBar.placeholder = NSLocalizedString("city_search_bar_placeholder", comment: "")
+        self.navigationItem.searchController = self.searchController
+        self.definesPresentationContext = true
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -45,16 +62,29 @@ class CitiesViewController: UIViewController {
 
 extension CitiesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard !self.isFiltering else { return self.filteredCities.count }
         return self.cities.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.cellIdentifier, for: indexPath)
-        let city = self.cities[indexPath.row]
+        let city = self.isFiltering ? self.filteredCities[indexPath.row] : self.cities[indexPath.row]
         cell.textLabel?.text = city.searchName
         cell.detailTextLabel?.numberOfLines = 2
         cell.detailTextLabel?.text = city.coordinateString
         return cell
+    }
+}
+
+extension CitiesViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let searchText = searchController.searchBar.text, !searchText.isEmpty else {
+            self.citiesTableView.reloadData()
+            return
+        }
+        
+        self.filteredCities = self.search.filter(cities: self.cities, with: searchText)
+        self.citiesTableView.reloadData()
     }
 }
 
