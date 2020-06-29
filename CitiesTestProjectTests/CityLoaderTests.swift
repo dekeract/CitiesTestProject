@@ -30,7 +30,7 @@ class CityLoaderTests: XCTestCase {
         var error: Error?
         var cities: [City] = []
         
-        sut.load { (result) in
+        sut.load(from: "fakeCities") { (result) in
             switch result {
             case .success(let items):
                 cities = items
@@ -43,5 +43,6 @@ class CityLoaderTests: XCTestCase {
         
         XCTAssertNil(error)
         XCTAssertGreaterThan(cities.count, 0, "Cities were not loaded")
+        XCTAssertLessThanOrEqual(cities[0].searchName, cities[1].searchName, "Cities weren't sorted alphabetically")
     }
 }

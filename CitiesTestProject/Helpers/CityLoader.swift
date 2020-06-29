@@ -9,15 +9,15 @@
 import Foundation
 
 protocol CityLoading {
-    func load(_ completion: @escaping (Result<[City], Error>) -> Void)
+    func load(from fileName: String, completion: @escaping (Result<[City], Error>) -> Void)
 }
 
 class CityLoader: CityLoading {
     private let queue = DispatchQueue(label: "personal.CitiesTestProject.CityLoader")
     
-    func load(_ completion: @escaping (Result<[City], Error>) -> Void) {
+    func load(from fileName: String, completion: @escaping (Result<[City], Error>) -> Void) {
         queue.async {
-            guard let fileURL = Bundle.main.url(forResource: "cities", withExtension: "json") else {
+            guard let fileURL = Bundle.main.url(forResource: fileName, withExtension: "json") else {
                 completion(.failure(CityError.missingFile))
                 return
             }
