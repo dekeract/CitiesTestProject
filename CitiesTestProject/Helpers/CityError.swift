@@ -8,6 +8,14 @@
 
 import Foundation
 
-enum CityError: Error {
+enum CityError: Error, LocalizedError {
     case missingFile
+    
+    var errorDescription: String? {
+        switch self {
+        case .missingFile:
+            return NSLocalizedString("city_missing_file_error", comment: "")
+        }
+    }
 }
+

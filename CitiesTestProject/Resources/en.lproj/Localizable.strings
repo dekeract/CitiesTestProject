@@ -7,3 +7,6 @@
 */
 
 "city_search_bar_placeholder" = "Search Cities";
+"city_missing_file_error" = "Cities initial file is missing";
+"city_alert_ok" = "OK";
+"city_alert_error_title" = "Error";

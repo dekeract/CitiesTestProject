@@ -29,8 +29,7 @@ class LoadingViewController: UIViewController {
             case .success(let items):
                 strongSelf.pushCitiesViewController(with: items)
             case .failure(let error):
-                // TODO: Display error
-                break
+                strongSelf.displayError(with: error.localizedDescription)
             }
             strongSelf.activityIndicator.stopAnimating()
         }
@@ -40,5 +39,14 @@ class LoadingViewController: UIViewController {
         guard let citiesViewController = UIStoryboard.cities.instantiateViewController(withIdentifier: self.citiesControllerIdentifier) as? CitiesViewController else { return }
         citiesViewController.cities = cities
         self.navigationController?.setViewControllers([citiesViewController], animated: true)
+    }
+    
+    private func displayError(with message: String) {
+        let alertController = UIAlertController(title: NSLocalizedString("city_alert_error_title", comment: ""), message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: NSLocalizedString("city_alert_ok", comment: ""), style: .default, handler: { [weak self] _ in
+            self?.pushCitiesViewController(with: [])
+        })
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
     }
 }
