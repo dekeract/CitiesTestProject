@@ -20,6 +20,7 @@ class CitiesViewController: UIViewController {
     
     private let citiesFilename = "cities"
     private let cellIdentifier = "Cell"
+    private let segueIdentifier = "LocationSegue"
     
     private let searchController = UISearchController(searchResultsController: nil)
     
@@ -57,6 +58,18 @@ class CitiesViewController: UIViewController {
             }
             strongSelf.activityIndicator.stopAnimating()
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == self.segueIdentifier else { return }
+        
+        guard let senderCell = sender as? UITableViewCell else { return }
+        
+        guard let indexPath = self.citiesTableView.indexPath(for: senderCell) else { return }
+        
+        guard let locationViewController = segue.destination as? LocationViewController else { return }
+        
+        locationViewController.coordinate = self.cities[indexPath.row].coordinate
     }
 }
 

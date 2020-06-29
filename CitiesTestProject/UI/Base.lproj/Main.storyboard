@@ -26,6 +26,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="zy9-4A-qa1" kind="showDetail" identifier="LocationSegue" id="bLa-L3-okJ"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -33,7 +36,7 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="dVg-m8-C5w"/>
                                 </connections>
                             </tableView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="2oC-Vg-EIv">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="2oC-Vg-EIv">
                                 <rect key="frame" x="197" y="438" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
@@ -63,15 +66,29 @@
             <objects>
                 <viewController storyboardIdentifier="LocationViewController" id="zy9-4A-qa1" customClass="LocationViewController" customModule="CitiesTestProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1pp-gh-YQu">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Oy7-oA-xgB">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Oy7-oA-xgB" firstAttribute="leading" secondItem="CvH-UI-K1O" secondAttribute="leading" id="Crx-ua-hzI"/>
+                            <constraint firstItem="CvH-UI-K1O" firstAttribute="bottom" secondItem="Oy7-oA-xgB" secondAttribute="bottom" id="Y7Y-7k-7AX"/>
+                            <constraint firstItem="CvH-UI-K1O" firstAttribute="trailing" secondItem="Oy7-oA-xgB" secondAttribute="trailing" id="r4J-rw-RQ2"/>
+                            <constraint firstItem="Oy7-oA-xgB" firstAttribute="top" secondItem="CvH-UI-K1O" secondAttribute="top" id="smZ-bU-pZX"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="CvH-UI-K1O"/>
                     </view>
+                    <connections>
+                        <outlet property="mapKitView" destination="Oy7-oA-xgB" id="Q7I-HV-o8w"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qx0-N3-CCV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="910" y="88"/>
+            <point key="canvasLocation" x="1007" y="88"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="anh-eA-ZBi">
