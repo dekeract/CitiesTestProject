@@ -43,6 +43,6 @@ class CityLoaderTests: XCTestCase {
         
         XCTAssertNil(error)
         XCTAssertGreaterThan(cities.count, 0, "Cities were not loaded")
-        XCTAssertLessThanOrEqual(cities[0].searchName, cities[1].searchName, "Cities weren't sorted alphabetically")
+        XCTAssertLessThanOrEqual(cities[0].searchName.lowercased(), cities[1].searchName.lowercased(), "Cities weren't sorted alphabetically")
     }
 }

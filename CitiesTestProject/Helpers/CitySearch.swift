@@ -19,7 +19,7 @@ class CitySearch: CitySearching {
         let lowerBoundIndex = firstOccurrenceIndex(of: searchedText, from: 0, to: cities.count - 1, in: cities)
         guard lowerBoundIndex >= 0 else { return [] }
         // then we find the last occurrence index of city name with searched text prefix, but in this case from first occurrence index to end of array
-        let upperBoundIndex = lastOccurrenceIndex(of: searchedText, from: lowerBoundIndex, to: cities.count, in: cities)
+        let upperBoundIndex = lastOccurrenceIndex(of: searchedText, from: lowerBoundIndex, to: cities.count - 1, in: cities)
         guard upperBoundIndex >= lowerBoundIndex, upperBoundIndex < cities.count else { return [] }
         
         // return cities between first occurrence index and last one
@@ -33,7 +33,7 @@ class CitySearch: CitySearching {
         let midIndex = (lowerBound + upperBound) / 2
         // idea is to find if middle city name (MC) matches the prefix
         // if it does, we get the prev to middle city (PC) and match it's name with the prefix
-        // if it's bigger, than any city name prev to MC doesn't match the prefix
+        // if the prefix is bigger, than any city name prev to MC doesn't match the prefix
         // because in order to match the prefix city name should contain the prefix characters + some else's
         // but in that case the prefix always be less than PC name
         // check midIndex == 0 is for safety to know that we don't go out of array
@@ -55,9 +55,11 @@ class CitySearch: CitySearching {
         // idea is same as for firstOccurrenceIndex, just we are looking for last one
         // for this we reverse logic of firstOccurrenceIndex
         let midIndex = (lowerBound + upperBound) / 2
-        if cities[midIndex].searchName.lowercased().starts(with: searchText.lowercased()) && (midIndex == cities.count - 1 || searchText.lowercased() < cities[midIndex + 1].searchName.lowercased()) {
+        let midIndexCityMatch = cities[midIndex].searchName.lowercased().starts(with: searchText.lowercased())
+        let nextIndexCityMatch = cities[midIndex + 1].searchName.lowercased().starts(with: searchText.lowercased())
+        if midIndexCityMatch && (midIndex == cities.count - 1 || (searchText.lowercased() < cities[midIndex + 1].searchName.lowercased() && !nextIndexCityMatch)) {
             return midIndex
-        } else if searchText.lowercased() < cities[midIndex].searchName.lowercased() {
+        } else if searchText.lowercased() < cities[midIndex].searchName.lowercased() && !nextIndexCityMatch {
             return lastOccurrenceIndex(of: searchText, from: lowerBound, to: midIndex - 1, in: cities)
         } else {
             return lastOccurrenceIndex(of: searchText, from: midIndex + 1, to: upperBound, in: cities)
