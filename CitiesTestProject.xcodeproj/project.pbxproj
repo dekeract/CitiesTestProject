@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		212D946224AA278000E99179 /* fakeCities.json in Resources */ = {isa = PBXBuildFile; fileRef = 212D946124AA278000E99179 /* fakeCities.json */; };
 		212D946424AA2C8200E99179 /* City+DisplayCoordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212D946324AA2C8200E99179 /* City+DisplayCoordinate.swift */; };
+		212D946724AA320200E99179 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 212D946924AA320200E99179 /* Localizable.strings */; };
 		21AFB7F724A8710400D1AF0C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21AFB7F624A8710400D1AF0C /* AppDelegate.swift */; };
 		21AFB7F924A8710400D1AF0C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21AFB7F824A8710400D1AF0C /* SceneDelegate.swift */; };
 		21AFB7FB24A8710400D1AF0C /* CitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21AFB7FA24A8710400D1AF0C /* CitiesViewController.swift */; };
@@ -40,6 +41,7 @@
 /* Begin PBXFileReference section */
 		212D946124AA278000E99179 /* fakeCities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fakeCities.json; sourceTree = "<group>"; };
 		212D946324AA2C8200E99179 /* City+DisplayCoordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "City+DisplayCoordinate.swift"; sourceTree = "<group>"; };
+		212D946824AA320200E99179 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		21AFB7F324A8710400D1AF0C /* CitiesTestProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CitiesTestProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21AFB7F624A8710400D1AF0C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21AFB7F824A8710400D1AF0C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				21AFB7FF24A8710500D1AF0C /* Assets.xcassets */,
+				212D946924AA320200E99179 /* Localizable.strings */,
 				21AFB82424A8739500D1AF0C /* cities.json */,
 				212D946124AA278000E99179 /* fakeCities.json */,
 			);
@@ -254,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				212D946224AA278000E99179 /* fakeCities.json in Resources */,
+				212D946724AA320200E99179 /* Localizable.strings in Resources */,
 				21AFB82524A8739500D1AF0C /* cities.json in Resources */,
 				21AFB80324A8710500D1AF0C /* LaunchScreen.storyboard in Resources */,
 				21AFB80024A8710500D1AF0C /* Assets.xcassets in Resources */,
@@ -309,6 +313,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		212D946924AA320200E99179 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				212D946824AA320200E99179 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		21AFB7FC24A8710400D1AF0C /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
