@@ -18,6 +18,10 @@ class CitiesViewController: UIViewController {
     private var cities: [City] = []
     private var filteredCities: [City] = []
     
+    private var items: [City] {
+        return self.isFiltering ? self.filteredCities : self.cities
+    }
+    
     private let citiesFilename = "cities"
     private let cellIdentifier = "Cell"
     private let segueIdentifier = "LocationSegue"
@@ -69,19 +73,18 @@ class CitiesViewController: UIViewController {
         
         guard let locationViewController = segue.destination as? LocationViewController else { return }
         
-        locationViewController.coordinate = self.cities[indexPath.row].coordinate
+        locationViewController.coordinate = self.items[indexPath.row].coordinate
     }
 }
 
 extension CitiesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard !self.isFiltering else { return self.filteredCities.count }
-        return self.cities.count
+        return self.items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.cellIdentifier, for: indexPath)
-        let city = self.isFiltering ? self.filteredCities[indexPath.row] : self.cities[indexPath.row]
+        let city = self.items[indexPath.row]
         cell.textLabel?.text = city.searchName
         cell.detailTextLabel?.numberOfLines = 2
         cell.detailTextLabel?.text = city.coordinateString
